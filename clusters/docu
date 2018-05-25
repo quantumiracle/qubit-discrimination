@@ -1,0 +1,10 @@
+all_kind_cluster.py: classifiers used before
+clus.py: all classifiers for qubit discrimination
+clus_pca.py: classifiers with pca data dimensions reduction
+lightlgb.py: lightGBM method from microsoft  98.56%
+
+factorization machine:for sparse data classification
+qubit_pyFM.py  95.9%
+qubit_fastFM.py
+qubit_tffm.py: tensorflow implement  98.515%
+

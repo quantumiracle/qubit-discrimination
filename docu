@@ -1,0 +1,42 @@
+ana.py: analyze distribution of bright/dark state photon counts
+
+
+
+
+qubit1lay.py:  1 layer NN  98.558%
+qubit2lay.py:  2 layers NN  98.54%
+qubit2lay_bin.py:  2 layers NN with different num of bins  98.5%
+qubit2laySGD.py:  SGDoptimizer
+qubit101.py: 101 bins with cooling count  98.558% 
+qubit_bn.py: with batch normalization
+qubit_cnn.py: cnn as first layer  98.57%
+qubit1lay_prepro.py: add 5*sum(of counts of each mearsurement) to training data set 98.5%
+qubit1lay_prepro20.py: add 20*sum(of counts of each mearsurement) to training data set 98.5%
+add 100*sum  98.5%
+(可见由于threshold method正确率更高，sum输入神经元个数增多会提高神经网络法正确率。即增多输入中的重要项可以提高正确率。)错！不影响，可能学不到sum代表的特征
+而增大重要项时，如20*10中将sum值*10，正确率96%？？随机出现学习50步即得此效果？
+qubit2lay_compact.py: num of bins compact 100->10   98.5%
+qubit1lay1lab.py: only 1 dim label, 1 for dark, 0 for bright   relu:98.2%  tanh:88%
+
+
+
+
+svm_example: example code
+svm.py: svm classifier  98.56%
+svm_bin.py: compact num of bins to 10(98.557%) or 1(98.129%)
+svm程序中不做svm而做同样的threshold方法, 97.3%, 小于qubit_threshold中的98.3%，按理应该一样，但可能由于样本不同导致。而svm做num_bins=1的分类， 达到98.557%，为threshold中d>=2,b<2计错时的最佳分辨效果(同为98.557%)，可见svm可以学到这个threshold.
+svm_pca.py:先pca到10个bin,再svm,不如直接svm
+
+
+
+SGDclassifier.py: sklearn module SGDclassifier
+
+qubit_threshold.py:  threshold method 98.36%-98.557%(best setting)
+
+label 1/0+softmax与1/-1+tanh结果差不多
+convert.py + qubit2lay_compact.py中对2-10数据的学习，将2进制数转为10进制数（不太合理，根据空间距离关系去想，可能存在空间距离近但形式差的大），compact bin数 96.8%，不如直接求和压缩bin 数的98.5%
+
+rnn.py: rnn classifier for qubit discrimination  98.425%
+
+
+
